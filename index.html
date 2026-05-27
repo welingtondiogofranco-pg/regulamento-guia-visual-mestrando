@@ -72,7 +72,16 @@ body{
   background:var(--fundo);
   transition:background .3s,color .3s;
 }
-img{max-width:100%;height:auto;display:block;}
+
+/* 🔧 IMAGENS: tratamento robusto para GitHub Pages */
+img{
+  max-width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+img[alt]{min-height:24px;} /* evita colapso do layout se imagem falhar */
+
 a{color:var(--azul);text-decoration:none;}
 a:hover{text-decoration:underline;}
 :focus-visible{outline:3px solid var(--ouro);outline-offset:3px;border-radius:4px;}
@@ -87,7 +96,7 @@ a:hover{text-decoration:underline;}
 .skip-link:focus{left:50%;transform:translateX(-50%);outline:none;}
 
 /* =====================================================
-   CABEÇALHO - NOVO LAYOUT 3 COLUNAS (Suffolk LIT Lab Style)
+   CABEÇALHO - LAYOUT ROBUSTO PARA GITHUB PAGES
    ===================================================== */
 .header {
   background: linear-gradient(135deg, #002855 0%, #1a3a6a 100%);
@@ -137,16 +146,18 @@ a:hover{text-decoration:underline;}
   padding-left: 0.75rem;
 }
 
-/* Bloco central: Logos institucionais */
+/* 🔧 Bloco central: Logos com fallback robusto */
 .header-center {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
+  min-height: 60px; /* 🔧 mantém altura mesmo sem imagens */
 }
 .header-logo {
   height: 48px;
   width: auto;
+  max-width: 120px;
   filter: brightness(0) invert(1);
   opacity: 0.95;
   transition: opacity 0.2s, transform 0.2s;
@@ -157,6 +168,24 @@ a:hover{text-decoration:underline;}
 }
 .header-logo.uepg-center {
   height: 60px;
+}
+/* 🔧 Placeholder visual se imagem falhar */
+.header-logo:not([src]), .header-logo[style*="display: none"] + .logo-fallback {
+  display: none;
+}
+.logo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  min-width: 80px;
+  background: rgba(255,255,255,0.1);
+  border: 1px dashed rgba(255,255,255,0.3);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 0 4px;
 }
 
 /* Bloco direito: Guia e links */
@@ -249,7 +278,7 @@ a:hover{text-decoration:underline;}
     text-align: center;
   }
   .header-center {
-    order: -1; /* Logos no topo em mobile */
+    order: -1;
     margin-bottom: 0.5rem;
   }
   .header-right {
@@ -638,7 +667,7 @@ a:hover{text-decoration:underline;}
 <button class="btn-tema" id="btnTema" aria-label="Alternar modo escuro" title="Alternar tema">🌙</button>
 
 <!-- =====================================================
-     CABEÇALHO - NOVO LAYOUT 3 COLUNAS
+     CABEÇALHO - LAYOUT ROBUSTO PARA GITHUB PAGES
      ===================================================== -->
 <header class="header" role="banner">
   <div class="header-grid">
@@ -652,11 +681,18 @@ a:hover{text-decoration:underline;}
       </p>
     </div>
     
-    <!-- BLOCO CENTRAL: Logos Institucionais -->
+    <!-- 🔧 BLOCO CENTRAL: Logos com tratamento de erro -->
     <div class="header-center" aria-label="Instituições parceiras">
-      <img src="./img/ceppodi.png" alt="Ceppodi - Centro de Pesquisa em Direito e Inovação" class="header-logo" loading="lazy" decoding="async">
-      <img src="./img/uepg.png" alt="Universidade Estadual de Ponta Grossa" class="header-logo uepg-center" loading="lazy" decoding="async">
-      <img src="./img/secijur.png" alt="Setor de Ciências Jurídicas - UEPG" class="header-logo" loading="lazy" decoding="async">
+      <img src="img/ceppodi.png" alt="Ceppodi" class="header-logo" 
+           loading="eager" decoding="async"
+           onerror="this.style.display='none'">
+      <!-- 🔧 UEPG REMOVIDA PARA TESTE - descomente quando corrigir o caminho/nome -->
+      <!-- <img src="img/uepg.jpg" alt="UEPG" class="header-logo uepg-center" 
+           loading="eager" decoding="async"
+           onerror="this.style.display='none'"> -->
+      <img src="img/secijur.png" alt="Secijur" class="header-logo" 
+           loading="eager" decoding="async"
+           onerror="this.style.display='none'">
     </div>
     
     <!-- BLOCO DIREITO: Guia e Links -->
@@ -1241,7 +1277,7 @@ a:hover{text-decoration:underline;}
 const srStyle=document.createElement('style');srStyle.textContent='.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}';document.head.appendChild(srStyle);
 
 /* =====================================================
-   TEMA ESCURO (Lógica simplificada e robusta)
+   TEMA ESCURO
    ===================================================== */
 (function(){
   const btn=document.getElementById('btnTema');
@@ -1266,7 +1302,7 @@ const srStyle=document.createElement('style');srStyle.textContent='.sr-only{posi
 })();
 
 /* =====================================================
-   GLOSSÁRIO TOOLTIPS (Com aria-describedby validado)
+   GLOSSÁRIO TOOLTIPS
    ===================================================== */
 (function(){
   document.querySelectorAll('.gloss-btn').forEach(function(btn){
@@ -1366,7 +1402,7 @@ const srStyle=document.createElement('style');srStyle.textContent='.sr-only{posi
 })();
 
 /* =====================================================
-   SCROLL SPY (IntersectionObserver)
+   SCROLL SPY
    ===================================================== */
 (function(){
   const links=document.querySelectorAll('.nav-link');
