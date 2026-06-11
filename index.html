@@ -95,6 +95,50 @@ a:hover{text-decoration:underline;}
 }
 .skip-link:focus{left:50%;transform:translateX(-50%);outline:none;}
 
+/* ===== ACESSIBILIDADE eMAG ===== */
+.accessibility-shortcuts {
+  background: #0c4a6e;
+  color: white;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  font-family: var(--ff-corpo);
+}
+.accessibility-shortcuts a {
+  color: #fcd34d;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.accessibility-shortcuts a:hover {
+  text-decoration: underline;
+}
+.acessibilidade-info {
+  margin-top: 40px;
+  font-size: 0.8rem;
+  border-top: 1px solid var(--borda);
+  padding-top: 15px;
+  color: var(--texto-suave);
+  text-align: center;
+  background: var(--fundo-card);
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+kbd {
+  background: #1e293b;
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  font-family: monospace;
+}
+
 /* =====================================================
    CABEÇALHO - LAYOUT ROBUSTO PARA GITHUB PAGES
    ===================================================== */
@@ -654,15 +698,25 @@ a:hover{text-decoration:underline;}
   .card{padding:1.25rem;}
 }
 @media print{
-  .btn-tema,.nav,.busca-wrap,.footer,.gloss-btn{display:none!important;}
-  .card{break-inside:avoid;box-shadow:none;}
+  .btn-tema,.nav,.busca-wrap,.footer,.gloss-btn,.accessibility-shortcuts,.acessibilidade-info,[vw],.vw,.enabled,.uwy,.userway-accessibility-widget{
+    display:none!important;
+  }
   body{color:#000;background:#fff;}
 }
 </style>
 </head>
 <body>
 
-<a href="#conteudo" class="skip-link">Ir para o conteúdo principal</a>
+<!-- ===== ACESSIBILIDADE eMAG: LINK PULAR CONTEÚDO ===== -->
+<a href="#conteudo" class="skip-link" accesskey="1" title="Ir para o conteúdo principal (Alt + 1)">Pular para o conteúdo principal</a>
+
+<!-- ===== BARRA DE ATALHOS DO TECLADO (eMAG) ===== -->
+<div class="accessibility-shortcuts" aria-label="Atalhos de acessibilidade do teclado">
+  <span>🔑 Atalhos (eMAG):</span>
+  <a href="#conteudo" accesskey="1">Alt + 1</a> = Conteúdo |
+  <a href="#rodape-acessibilidade" accesskey="4">Alt + 4</a> = Rodapé |
+  <a href="#info-acessibilidade" accesskey="0">Alt + 0</a> = Acessibilidade
+</div>
 
 <button class="btn-tema" id="btnTema" aria-label="Alternar modo escuro" title="Alternar tema">🌙</button>
 
@@ -749,7 +803,7 @@ a:hover{text-decoration:underline;}
   </div>
 </div>
 
-<main id="conteudo" class="main">
+<main id="conteudo" class="main" tabindex="-1">
 
   <!-- =====================================================
        SEÇÃO: COMO USAR
@@ -1271,6 +1325,47 @@ a:hover{text-decoration:underline;}
     <p style="margin-top:.75rem;font-size:.78rem;opacity:.6;">Guia em linguagem simples conforme a Lei nº 15.263/2025 · Política Nacional de Linguagem Simples</p>
   </div>
 </footer>
+
+<!-- ===== RODAPÉ COM INFORMAÇÕES DE ACESSIBILIDADE ===== -->
+<div id="rodape-acessibilidade" class="acessibilidade-info" tabindex="-1">
+  <div id="info-acessibilidade">
+    <strong>📌 Acessibilidade – Atalhos do teclado (eMAG):</strong><br>
+    • <kbd>Alt + 1</kbd> – Ir para o conteúdo principal<br>
+    • <kbd>Alt + 4</kbd> – Ir para este rodapé<br>
+    • <kbd>Alt + 0</kbd> – Ir para as informações de acessibilidade<br>
+    <br>
+    <strong>🔊 Ferramentas disponíveis nesta página:</strong><br>
+    ✓ <strong>VLibras</strong> – Tradutor para Língua Brasileira de Sinais (clique no ícone flutuante)<br>
+    ✓ <strong>UserWay</strong> – Painel de acessibilidade com ajustes de contraste, fonte, espaçamento, leitor de tela etc. (clique no ícone de pessoa com deficiência)<br>
+    <br>
+    <em>Este documento segue as diretrizes da Lei Brasileira de Inclusão (LBI) e do Modelo de Acessibilidade em Governo Eletrônico (eMAG).</em>
+  </div>
+</div>
+
+<!-- ========== VLIBRAS ========== -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  });
+</script>
+
+<!-- ========== USERWAY (gratuito) ========== -->
+<!-- 
+  Para usar o UserWay gratuitamente:
+  1. Acesse https://userway.org/ e cadastre seu site (plano gratuito).
+  2. Após o cadastro, você receberá um código de identificação (data-account).
+  3. Substitua "SEU_ID_AQUI" pelo seu código.
+  4. O widget aparecerá como um ícone flutuante (geralmente no canto inferior esquerdo).
+-->
+<script src="https://cdn.userway.org/widget.js" data-account="SEU_ID_AQUI"></script>
+<!-- IMPORTANTE: para testes, você pode remover a linha acima ou manter o placeholder. -->
 
 <script>
 /* sr-only */
