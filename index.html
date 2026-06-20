@@ -73,20 +73,18 @@ body{
   transition:background .3s,color .3s;
 }
 
-/* 🔧 IMAGENS: tratamento robusto para GitHub Pages */
 img{
   max-width:100%;
   height:auto;
   display:block;
   object-fit:contain;
 }
-img[alt]{min-height:24px;} /* evita colapso do layout se imagem falhar */
+img[alt]{min-height:24px;}
 
 a{color:var(--azul);text-decoration:none;}
 a:hover{text-decoration:underline;}
 :focus-visible{outline:3px solid var(--ouro);outline-offset:3px;border-radius:4px;}
 
-/* Skip link */
 .skip-link{
   position:absolute;left:-9999px;top:0;
   background:var(--azul);color:#fff;
@@ -95,7 +93,6 @@ a:hover{text-decoration:underline;}
 }
 .skip-link:focus{left:50%;transform:translateX(-50%);outline:none;}
 
-/* ===== ACESSIBILIDADE eMAG ===== */
 .accessibility-shortcuts {
   background: #0c4a6e;
   color: white;
@@ -139,9 +136,6 @@ kbd {
   font-family: monospace;
 }
 
-/* =====================================================
-   CABEÇALHO - LAYOUT ROBUSTO PARA GITHUB PAGES
-   ===================================================== */
 .header {
   background: linear-gradient(135deg, #002855 0%, #1a3a6a 100%);
   color: #fff;
@@ -158,7 +152,6 @@ kbd {
   align-items: center;
 }
 
-/* Bloco esquerdo: Identidade LegalTechLab */
 .header-left {
   display: flex;
   flex-direction: column;
@@ -190,13 +183,12 @@ kbd {
   padding-left: 0.75rem;
 }
 
-/* 🔧 Bloco central: Logos com fallback robusto */
 .header-center {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
-  min-height: 60px; /* 🔧 mantém altura mesmo sem imagens */
+  min-height: 60px;
 }
 .header-logo {
   height: 48px;
@@ -213,7 +205,6 @@ kbd {
 .header-logo.uepg-center {
   height: 60px;
 }
-/* 🔧 Placeholder visual se imagem falhar */
 .header-logo:not([src]), .header-logo[style*="display: none"] + .logo-fallback {
   display: none;
 }
@@ -232,7 +223,6 @@ kbd {
   padding: 0 4px;
 }
 
-/* Bloco direito: Guia e links */
 .header-right {
   display: flex;
   flex-direction: column;
@@ -287,7 +277,6 @@ kbd {
   outline-offset: 2px;
 }
 
-/* Toggle de tema */
 .btn-tema {
   position: fixed;
   top: 1rem;
@@ -310,7 +299,6 @@ kbd {
 .btn-tema:hover { transform: scale(1.1); }
 [data-tema="escuro"] .btn-tema { background: #c9a135; color: #002855; }
 
-/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 1024px) {
   .header-grid {
     grid-template-columns: 1fr;
@@ -356,7 +344,6 @@ kbd {
   .header-link { font-size: 0.75rem; padding: 0.25rem 0.7rem; }
 }
 
-/* ===== MODO ESCURO ===== */
 [data-tema="escuro"] .header {
   background: linear-gradient(135deg, #0a1020 0%, #132136 100%);
 }
@@ -370,9 +357,6 @@ kbd {
   background: rgba(230,193,90,0.25);
 }
 
-/* =====================================================
-   NAVEGAÇÃO
-   ===================================================== */
 .nav{
   position:sticky;top:0;z-index:1000;
   background:var(--fundo-card);
@@ -399,9 +383,6 @@ kbd {
 .nav-link:hover{background:var(--azul-claro);color:var(--azul);text-decoration:none;}
 .nav-link.ativo{background:var(--azul);color:#fff;}
 
-/* =====================================================
-   BUSCA
-   ===================================================== */
 .busca-wrap{background:var(--azul-claro);padding:.75rem 1.5rem;border-bottom:1px solid var(--borda);}
 .busca-inner{max-width:1200px;margin:0 auto;position:relative;}
 .busca-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--texto-suave);pointer-events:none;}
@@ -420,12 +401,8 @@ kbd {
   color:var(--texto-suave);font-size:.9rem;font-style:italic;
 }
 
-/* =====================================================
-   LAYOUT PRINCIPAL
-   ===================================================== */
 .main{max-width:1200px;margin:0 auto;padding:2rem 1.5rem;}
 
-/* Seção visual (full-width backgrounds) */
 .secao-visual{
   background:var(--fundo-card);
   border:1px solid var(--borda);
@@ -441,7 +418,6 @@ kbd {
   display:flex;align-items:center;gap:.6rem;
 }
 
-/* Título de título (entre seções) */
 .titulo-titulo{
   display:flex;align-items:center;gap:.75rem;
   background:var(--azul);color:#fff;
@@ -457,7 +433,6 @@ kbd {
   letter-spacing:.05em;text-transform:uppercase;
 }
 
-/* Cards de artigo */
 .card{
   background:var(--fundo-card);
   border:1px solid var(--borda);
@@ -479,7 +454,6 @@ kbd {
 .card-title{font-size:1.1rem;font-weight:600;color:var(--azul);}
 [data-tema="escuro"] .card-title{color:var(--azul-meio);}
 
-/* Versão simples */
 .simples{
   background:var(--azul-claro);
   border-left:3px solid var(--azul-meio);
@@ -495,7 +469,6 @@ kbd {
 .simples ul,.simples ol{padding-left:1.4rem;margin:.5rem 0;}
 .simples li{margin:.3rem 0;font-size:.95rem;}
 
-/* Nota prática */
 .nota{
   background:var(--ouro-claro);
   border-left:3px solid var(--ouro);
@@ -505,7 +478,6 @@ kbd {
 }
 [data-tema="escuro"] .nota{background:rgba(201,161,53,.08);}
 
-/* Detalhes (texto original) - ACORDEÃO NATIVO */
 .detalhe{margin:.75rem 0;}
 .detalhe summary{
   cursor:pointer;padding:.55rem 1rem;
@@ -526,7 +498,6 @@ kbd {
   font-style:italic;line-height:1.7;
 }
 
-/* Tags semânticas */
 .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;}
 .tag{
   display:inline-flex;align-items:center;gap:.35rem;
@@ -540,7 +511,6 @@ kbd {
 .tag-dir    {background:var(--cor-dir-bg)  ;color:var(--cor-dir-tx)  ;border-color:var(--cor-dir-bd);}
 .tag-info   {background:var(--cor-info-bg) ;color:var(--cor-info-tx) ;border-color:var(--cor-info-bd);}
 
-/* Glossário tooltip (Ajuste WCAG 1.4.1 + ARIA) */
 .gloss-wrap{position:relative;display:inline-block;}
 .gloss-btn{
   display:inline-flex;align-items:center;justify-content:center;
@@ -569,15 +539,9 @@ kbd {
 }
 .gloss-btn[aria-expanded="true"]+.gloss-pop{opacity:1;visibility:visible;}
 
-/* =====================================================
-   VISUAL 1 — FLUXOGRAMA DA JORNADA (SVG)
-   ===================================================== */
 .jornada-svg-wrap{overflow-x:auto;padding:.5rem 0;}
 .jornada-svg-wrap svg{min-width:680px;width:100%;}
 
-/* =====================================================
-   VISUAL 2 — GRÁFICO DONUT (33 CRÉDITOS)
-   ===================================================== */
 .creditos-layout{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;}
 @media(max-width:600px){.creditos-layout{grid-template-columns:1fr;}}
 .donut-wrap{position:relative;width:200px;height:200px;flex-shrink:0;margin:0 auto;}
@@ -597,15 +561,9 @@ kbd {
 [data-tema="escuro"] .leg-cred{color:var(--azul-meio);}
 .leg-desc{color:var(--texto-suave);font-size:.82rem;}
 
-/* =====================================================
-   VISUAL 3 — ÁRVORE DE PRÉ-REQUISITOS (Art. 40)
-   ===================================================== */
 .prereq-wrap{overflow-x:auto;}
 .prereq-wrap svg{min-width:600px;width:100%;}
 
-/* =====================================================
-   CHECKLIST
-   ===================================================== */
 .checklist-card{
   background:linear-gradient(135deg,var(--azul-claro) 0%,var(--ouro-claro) 100%);
   border:2px solid var(--azul);border-radius:var(--r-xl);
@@ -638,9 +596,6 @@ kbd {
 .progresso-track{height:10px;background:var(--borda);border-radius:5px;overflow:hidden;}
 .progresso-fill{height:100%;background:var(--azul);border-radius:5px;transition:width .4s ease;width:0%;}
 
-/* =====================================================
-   COMO USAR
-   ===================================================== */
 .como-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1rem;}
 .como-item{
   background:var(--fundo-card);border:1px solid var(--borda);
@@ -649,9 +604,6 @@ kbd {
 .como-icone{font-size:1.75rem;margin-bottom:.5rem;}
 .como-desc{font-size:.85rem;color:var(--texto-suave);line-height:1.4;}
 
-/* =====================================================
-   LINHAS DE PESQUISA (cards especiais)
-   ===================================================== */
 .linhas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:.75rem 0;}
 .linha-card{
   border-radius:var(--r-md);padding:1.25rem;
@@ -669,9 +621,6 @@ kbd {
 .linha-titulo{font-size:.95rem;font-weight:600;margin:.3rem 0;}
 .linha-desc{font-size:.83rem;color:var(--texto-suave);line-height:1.5;}
 
-/* =====================================================
-   FOOTER & DESTAQUES
-   ===================================================== */
 .footer{
   background:var(--azul);color:rgba(255,255,255,.85);
   padding:2rem 0;margin-top:3rem;text-align:center;
@@ -681,7 +630,6 @@ kbd {
 .footer p{margin:.3rem 0;font-size:.88rem;}
 [data-tema="escuro"] .footer{background:#0a1020;}
 
-/* Ajuste de contraste para marcação de busca no dark mode */
 [data-tema="escuro"] mark {
   background: rgba(230, 193, 90, 0.45);
   color: #000;
@@ -689,9 +637,6 @@ kbd {
   border-radius: 2px;
 }
 
-/* =====================================================
-   RESPONSIVO
-   ===================================================== */
 @media(max-width:640px){
   .main{padding:1.5rem 1rem;}
   .secao-visual,.checklist-card{padding:1.25rem;}
@@ -707,10 +652,8 @@ kbd {
 </head>
 <body>
 
-<!-- ===== ACESSIBILIDADE eMAG: LINK PULAR CONTEÚDO ===== -->
 <a href="#conteudo" class="skip-link" accesskey="1" title="Ir para o conteúdo principal (Alt + 1)">Pular para o conteúdo principal</a>
 
-<!-- ===== BARRA DE ATALHOS DO TECLADO (eMAG) ===== -->
 <div class="accessibility-shortcuts" aria-label="Atalhos de acessibilidade do teclado">
   <span>🔑 Atalhos (eMAG):</span>
   <a href="#conteudo" accesskey="1">Alt + 1</a> = Conteúdo |
@@ -720,13 +663,9 @@ kbd {
 
 <button class="btn-tema" id="btnTema" aria-label="Alternar modo escuro" title="Alternar tema">🌙</button>
 
-<!-- =====================================================
-     CABEÇALHO - LAYOUT ROBUSTO PARA GITHUB PAGES
-     ===================================================== -->
 <header class="header" role="banner">
   <div class="header-grid">
     
-    <!-- BLOCO ESQUERDO: Identidade LegalTechLab -->
     <div class="header-left">
       <h1 class="header-lab-name">UEPG LegalTechLab</h1>
       <p class="header-lab-desc">Laboratório de Tecnologia e Inovação em Direito</p>
@@ -735,21 +674,15 @@ kbd {
       </p>
     </div>
     
-    <!-- 🔧 BLOCO CENTRAL: Logos com tratamento de erro -->
     <div class="header-center" aria-label="Instituições parceiras">
       <img src="img/ceppodi.png" alt="Ceppodi" class="header-logo" 
            loading="eager" decoding="async"
            onerror="this.style.display='none'">
-      <!-- 🔧 UEPG REMOVIDA PARA TESTE - descomente quando corrigir o caminho/nome -->
-      <!-- <img src="img/uepg.jpg" alt="UEPG" class="header-logo uepg-center" 
-           loading="eager" decoding="async"
-           onerror="this.style.display='none'"> -->
       <img src="img/secijur.png" alt="Secijur" class="header-logo" 
            loading="eager" decoding="async"
            onerror="this.style.display='none'">
     </div>
     
-    <!-- BLOCO DIREITO: Guia e Links -->
     <div class="header-right">
       <h2 class="header-guide-title">Guia Visual do Mestrando</h2>
       <p class="header-guide-subtitle">Mestrado Profissional em Direito • área de concentração Teorias e Práticas Jurídicas em Perspectiva Translacional</p>
@@ -774,7 +707,6 @@ kbd {
   </div>
 </header>
 
-<!-- NAVEGAÇÃO -->
 <nav class="nav" aria-label="Seções do guia">
   <div class="nav-inner">
     <a href="#inicio"       class="nav-link">Início</a>
@@ -793,7 +725,6 @@ kbd {
   </div>
 </nav>
 
-<!-- BUSCA -->
 <div class="busca-wrap" role="search">
   <div class="busca-inner">
     <svg class="busca-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -805,9 +736,6 @@ kbd {
 
 <main id="conteudo" class="main" tabindex="-1">
 
-  <!-- =====================================================
-       SEÇÃO: COMO USAR
-       ===================================================== -->
   <section id="inicio" class="secao-visual" aria-labelledby="como-usar-titulo">
     <h2 id="como-usar-titulo">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
@@ -844,9 +772,6 @@ kbd {
     </p>
   </section>
 
-  <!-- =====================================================
-       VISUAL 1 — FLUXOGRAMA DA JORNADA
-       ===================================================== -->
   <section id="jornada" class="secao-visual" aria-labelledby="jornada-titulo">
     <h2 id="jornada-titulo">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18m-6-6 6 6-6 6"/></svg>
@@ -854,7 +779,6 @@ kbd {
     </h2>
     <p style="font-size:.9rem;color:var(--texto-suave);margin-bottom:1rem;">Do processo seletivo até a obtenção do título: conheça cada etapa e seus requisitos.</p>
     <div class="jornada-svg-wrap">
-      <!-- SVG Fluxograma (atualizado com novo texto) -->
       <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-jornada-title svg-jornada-desc">
         <title id="svg-jornada-title">Fluxograma da jornada do mestrando</title>
         <desc id="svg-jornada-desc">Sequência de 6 etapas: Seleção, Matrícula e Orientação, Créditos (18 meses), Qualificação, Defesa Pública e Entrega Final em até 60 dias.</desc>
@@ -871,17 +795,7 @@ kbd {
         <line x1="110" y1="120" x2="178" y2="120" stroke="#1a4a80" stroke-width="2" marker-end="url(#arr)"/>
         <g><circle cx="200" cy="120" r="28" fill="#1a4a80"/><text x="200" y="115" text-anchor="middle" font-family="DM Serif Display,serif" font-size="18" fill="#fff">2</text><text x="200" y="127" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#c9a135" font-weight="600">MATRÍCULA</text><text x="200" y="168" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#002855" font-weight="600">Matrícula e</text><text x="200" y="182" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#002855" font-weight="600">Orientação</text><text x="200" y="200" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#4a5568">Vínculo + orientador</text></g>
         <line x1="230" y1="120" x2="298" y2="120" stroke="#1a4a80" stroke-width="2" marker-end="url(#arr)"/>
-        <g><circle cx="330" cy="120" r="36" fill="#c9a135"/><text x="330" y="113" text-anchor="middle" font-family="DM Serif Display,serif" font-size="20" fill="#fff">3</text><text x="330" y="127" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#002855" font-weight="700">CRÉDITOS</text><text x="330" y="177" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#002855" font-weight="600">33 Créditos</text><text x="330" y="191" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#4a5568">até 24 meses</text>
-        <!-- retângulo e textos atualizados -->
-        <rect x="230" y="200" width="200" height="100" rx="8" fill="#fdf6e3" stroke="#c9a135" stroke-width="1.5"/>
-        <text x="330" y="218" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a4f00" font-weight="600">Formação geral;</text>
-        <text x="330" y="231" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a4f00">Aprofundamento na linha;</text>
-        <text x="330" y="244" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a4f00">Aprofundamento livre;</text>
-        <text x="330" y="257" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a4f00">Imersão prático institucional;</text>
-        <text x="330" y="270" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a4f00">Disseminação do conhecimento</text>
-        <text x="330" y="283" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8.5" fill="#7a4f00">e Pesquisa e escrita.</text>
-        <line x1="330" y1="200" x2="330" y2="158" stroke="#c9a135" stroke-width="1" stroke-dasharray="3 2"/>
-        </g>
+        <g><circle cx="330" cy="120" r="36" fill="#c9a135"/><text x="330" y="113" text-anchor="middle" font-family="DM Serif Display,serif" font-size="20" fill="#fff">3</text><text x="330" y="127" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#002855" font-weight="700">CRÉDITOS</text><text x="330" y="177" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#002855" font-weight="600">33 Créditos</text><text x="330" y="191" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#4a5568">até 24 meses</text><rect x="255" y="215" width="150" height="82" rx="8" fill="#fdf6e3" stroke="#c9a135" stroke-width="1.5"/><text x="330" y="228" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7a4f00" font-weight="600">Formação geral</text><text x="330" y="239" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7a4f00">Aprofundamento na linha</text><text x="330" y="250" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7a4f00">Aprofundamento livre</text><text x="330" y="261" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7a4f00">Imersão prático-institucional</text><text x="330" y="272" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7a4f00">Disseminação do conhecimento</text><text x="330" y="283" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7a4f00">Pesquisa e escrita</text><line x1="330" y1="215" x2="330" y2="158" stroke="#c9a135" stroke-width="1" stroke-dasharray="3 2"/></g>
         <line x1="368" y1="120" x2="446" y2="120" stroke="#1a4a80" stroke-width="2" marker-end="url(#arr)"/>
         <g><circle cx="470" cy="120" r="28" fill="#002855"/><text x="470" y="115" text-anchor="middle" font-family="DM Serif Display,serif" font-size="18" fill="#fff">4</text><text x="470" y="127" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7" fill="#c9a135" font-weight="700">QUALIFICAÇÃO</text><text x="470" y="168" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#002855" font-weight="600">Exame de</text><text x="470" y="182" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#002855" font-weight="600">Qualificação</text><text x="470" y="200" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#4a5568">Artigo aceito exigido</text><rect x="400" y="44" width="140" height="36" rx="8" fill="#e8f0fb" stroke="#1a4a80" stroke-width="1"/><text x="470" y="60" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" fill="#002855" font-weight="500">Banca: 3 titulares</text><text x="470" y="73" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9.5" fill="#002855" font-weight="500">+ 1 externo (30 dias)</text><line x1="470" y1="92" x2="470" y2="80" stroke="#1a4a80" stroke-width="1" stroke-dasharray="3 2"/></g>
         <line x1="500" y1="120" x2="568" y2="120" stroke="#1a4a80" stroke-width="2" marker-end="url(#arr)"/>
@@ -893,12 +807,6 @@ kbd {
     </div>
   </section>
 
-  <!-- =====================================================
-       VISUAL 2 — GRÁFICO DE CRÉDITOS
-       ===================================================== -->
-  <!-- =====================================================
-       VISUAL 2 — GRÁFICO DE CRÉDITOS
-       ===================================================== -->
   <section id="creditos-vis" class="secao-visual" aria-labelledby="cred-titulo">
     <h2 id="cred-titulo">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -907,34 +815,16 @@ kbd {
     <p style="font-size:.9rem;color:var(--texto-suave);margin-bottom:1.5rem;">1 crédito = 15 horas. Prazo máximo de integralização: 24 meses + 6 meses excepcionais.</p>
     <div class="creditos-layout">
       <div class="donut-wrap" role="img" aria-label="Gráfico de rosca com a composição dos 33 créditos do mestrado">
-        <svg id="donutSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Gráfico pré-renderizado -->
-          <path d="M 100 20 L 100 20 A 80 80 0 0 1 173.92 68.48 L 152 68.48 A 52 52 0 0 0 100 72 Z" fill="#002855" stroke="var(--fundo-card)" stroke-width="2"/>
-          <path d="M 173.92 68.48 L 173.92 68.48 A 80 80 0 0 1 180 100 L 152 100 A 52 52 0 0 0 152 68.48 Z" fill="#1a4a80" stroke="var(--fundo-card)" stroke-width="2"/>
-          <path d="M 180 100 L 180 100 A 80 80 0 0 1 173.92 131.52 L 152 131.52 A 52 52 0 0 0 152 100 Z" fill="#2e6aad" stroke="var(--fundo-card)" stroke-width="2"/>
-          <path d="M 173.92 131.52 L 173.92 131.52 A 80 80 0 0 1 148.48 164.24 L 131.52 148.48 A 52 52 0 0 0 152 131.52 Z" fill="#c9a135" stroke="var(--fundo-card)" stroke-width="2"/>
-          <path d="M 148.48 164.24 L 148.48 164.24 A 80 80 0 0 1 100 180 L 100 152 A 52 52 0 0 0 131.52 148.48 Z" fill="#e6c15a" stroke="var(--fundo-card)" stroke-width="2"/>
-          <path d="M 100 180 L 100 180 A 80 80 0 0 1 20 100 L 48 100 A 52 52 0 0 0 100 152 Z" fill="#f0d88a" stroke="var(--fundo-card)" stroke-width="2"/>
-        </svg>
+        <svg id="donutSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
         <div class="donut-centro">
           <div class="donut-num">33</div>
           <div class="donut-label">créditos</div>
         </div>
       </div>
-      <div class="creditos-legenda" id="creditosLegenda">
-        <div class="leg-item"><div class="leg-cor" style="background:#002855"></div><div class="leg-texto"><span class="leg-cred">9 cr.</span> <span class="leg-desc">Formação geral</span></div></div>
-        <div class="leg-item"><div class="leg-cor" style="background:#1a4a80"></div><div class="leg-texto"><span class="leg-cred">6 cr.</span> <span class="leg-desc">Aprofundamento linha</span></div></div>
-        <div class="leg-item"><div class="leg-cor" style="background:#2e6aad"></div><div class="leg-texto"><span class="leg-cred">6 cr.</span> <span class="leg-desc">Aprofundamento livre</span></div></div>
-        <div class="leg-item"><div class="leg-cor" style="background:#c9a135"></div><div class="leg-texto"><span class="leg-cred">4 cr.</span> <span class="leg-desc">Imersão prática</span></div></div>
-        <div class="leg-item"><div class="leg-cor" style="background:#e6c15a"></div><div class="leg-texto"><span class="leg-cred">4 cr.</span> <span class="leg-desc">Disseminação</span></div></div>
-        <div class="leg-item"><div class="leg-cor" style="background:#f0d88a"></div><div class="leg-texto"><span class="leg-cred">4 cr.</span> <span class="leg-desc">Pesquisa e escrita</span></div></div>
-      </div>
+      <div class="creditos-legenda" id="creditosLegenda"></div>
     </div>
   </section>
 
-  <!-- =====================================================
-       VISUAL 3 — PRÉ-REQUISITOS QUALIFICAÇÃO (Art. 40)
-       ===================================================== -->
   <section id="prereq" class="secao-visual" aria-labelledby="prereq-titulo">
     <h2 id="prereq-titulo">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M5 7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7z"/></svg>
@@ -957,9 +847,6 @@ kbd {
     <p class="nota" style="margin-top:.75rem;">⚠️ <strong>Atenção ao requisito ④:</strong> O artigo aceito é condição obrigatória e independe do seu orientador. Planeje a submissão com pelo menos 6 meses de antecedência, pois a avaliação editorial pode levar meses.</p>
   </section>
 
-  <!-- =====================================================
-       CHECKLIST
-       ===================================================== -->
   <section id="checklist" class="checklist-card" aria-labelledby="check-titulo">
     <h2 class="checklist-titulo" id="check-titulo">✅ Checklist do título de Mestre</h2>
     <p class="checklist-sub">Marque os requisitos conforme avança. Seu progresso é salvo automaticamente neste navegador.</p>
@@ -977,9 +864,6 @@ kbd {
     </div>
   </section>
 
-  <!-- =====================================================
-       TÍTULO I — FINALIDADES
-       ===================================================== -->
   <h2 id="titulo1" class="titulo-titulo"><span>TÍTULO I</span> Das Finalidades</h2>
 
   <article class="card" id="art1" data-busca="regulamento normas uepg stricto sensu">
@@ -1064,34 +948,27 @@ kbd {
     <div class="tags"><span class="tag tag-obrig"><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v8M8 13h.01"/></svg>Obrigação: alinhar a pesquisa ao objetivo do programa</span></div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO II — ORGANIZAÇÃO
-       ===================================================== -->
   <h2 id="titulo2" class="titulo-titulo"><span>TÍTULO II</span> Organização e Coordenação</h2>
 
   <article class="card" id="art7-13" data-busca="colegiado coordenação secretaria quórum reuniões atribuições">
     <div class="card-head"><span class="art-badge">Arts. 7º a 13</span><h3 class="card-title">Estrutura Administrativa</h3></div>
-    <div class="simples" aria-label="Explicação em linguagem simples">
+    <div class="simples">
       <div class="simples-head" aria-hidden="true">🗣️ Em linguagem simples</div>
-      <!-- CONTEÚDO SUBSTITUÍDO CONFORME SOLICITAÇÃO 02 -->
-      <p><strong>Como o Programa é gerenciado?</strong><br>
-      Nossa estrutura administrativa é dividida em três instâncias para apoiar sua jornada acadêmica:</p>
-
-      <p><strong>🏛️ Colegiado (As grandes decisões)</strong><br>
-      É o órgão responsável por coordenar a parte didática e pedagógica do Programa.<br>
-      <strong>O que faz:</strong> Define as regras de funcionamento, aprova o calendário de aulas, analisa as bancas examinadoras e decide sobre pedidos de trancamento ou cancelamento de disciplinas.<br>
-      <strong>Como funciona:</strong> Toma decisões por maioria simples em reuniões mensais. Reuniões extraordinárias podem ser marcadas com, no mínimo, 48 horas de antecedência.<br>
-      <strong>Quem participa:</strong> Coordenador, Vice-Coordenador, professores (pelo menos um representante de cada Linha de Pesquisa) e um representante dos alunos.<br>
-      💡 <strong>Dica:</strong> O mandato do representante estudantil dura 1 ano (podendo ser renovado). Você pode se candidatar e ajudar a construir o programa!</p>
-
-      <p><strong>⚙️ Coordenação (A gestão do dia a dia)</strong><br>
-      É a instância que lidera o funcionamento do Programa e garante que o planejamento saia do papel.<br>
-      <strong>O que faz:</strong> Define as datas de qualificação (em conjunto com o seu orientador), propõe disciplinas, encaminha seus documentos para a Secretaria e cuida da gestão de bolsas e relatórios institucionais.</p>
-
-      <p><strong>🤝 Secretaria Acadêmica (Seu principal ponto de contato)</strong><br>
-      É o setor que organiza a vida acadêmica e administrativa do aluno.<br>
-      <strong>O que faz:</strong> Cuida da sua administração escolar, dos arquivos, dos registros e da comunicação oficial.<br>
-      💡 <strong>Dica:</strong> Para dúvidas sobre matrículas, emissão de documentos ou fluxos administrativos diários, este é sempre o seu primeiro canal de atendimento!</p>
+      <p><strong>Como o Programa é gerenciado?</strong></p>
+      <p style="margin-top:.5rem;">Nossa estrutura administrativa é dividida em três instâncias para apoiar sua jornada acadêmica:</p>
+      <p style="margin-top:.75rem;">🏛️ <strong>Colegiado (As grandes decisões)</strong></p>
+      <p>É o órgão responsável por coordenar a parte didática e pedagógica do Programa.</p>
+      <p><strong>O que faz:</strong> Define as regras de funcionamento, aprova o calendário de aulas, analisa as bancas examinadoras e decide sobre pedidos de trancamento ou cancelamento de disciplinas.</p>
+      <p><strong>Como funciona:</strong> Toma decisões por maioria simples em reuniões mensais. Reuniões extraordinárias podem ser marcadas com, no mínimo, 48 horas de antecedência.</p>
+      <p><strong>Quem participa:</strong> Coordenador, Vice-Coordenador, professores (pelo menos um representante de cada Linha de Pesquisa) e um representante dos alunos.</p>
+      <p class="nota">💡 <strong>Dica:</strong> O mandato do representante estudantil dura 1 ano (podendo ser renovado). Você pode se candidatar e ajudar a construir o programa!</p>
+      <p style="margin-top:.75rem;">⚙️ <strong>Coordenação (A gestão do dia a dia)</strong></p>
+      <p>É a instância que lidera o funcionamento do Programa e garante que o planejamento saia do papel.</p>
+      <p><strong>O que faz:</strong> Define as datas de qualificação (em conjunto com o seu orientador), propõe disciplinas, encaminha seus documentos para a Secretaria e cuida da gestão de bolsas e relatórios institucionais.</p>
+      <p style="margin-top:.75rem;">🤝 <strong>Secretaria Acadêmica (Seu principal ponto de contato)</strong></p>
+      <p>É o setor que organiza a vida acadêmica e administrativa do aluno.</p>
+      <p><strong>O que faz:</strong> Cuida da sua administração escolar, dos arquivos, dos registros e da comunicação oficial.</p>
+      <p class="nota">💡 <strong>Dica:</strong> Para dúvidas sobre matrículas, emissão de documentos ou fluxos administrativos diários, este é sempre o seu primeiro canal de atendimento!</p>
     </div>
     <details class="detalhe" name="regulamento-details">
       <summary>📄 Ver texto original dos Arts. 7º a 13</summary>
@@ -1103,9 +980,6 @@ kbd {
     </div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO III — SELEÇÃO
-       ===================================================== -->
   <h2 id="titulo3" class="titulo-titulo"><span>TÍTULO III</span> Seleção, Admissão e Orientação</h2>
 
   <article class="card" id="art14-15" data-busca="edital seleção vagas inscrição critérios estrangeiros">
@@ -1124,39 +998,27 @@ kbd {
     <div class="tags"><span class="tag tag-prazo"><svg aria-hidden="true" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>Fique atento aos prazos do edital</span></div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO IV — DISCENTES
-       ===================================================== -->
   <h2 id="titulo4" class="titulo-titulo"><span>TÍTULO IV</span> Corpo Discente</h2>
 
   <article class="card" id="art16-17" data-busca="aluno regular especial graduação matrícula orientação frequência trancamento direitos obrigações">
     <div class="card-head"><span class="art-badge">Arts. 16 e 17</span><h3 class="card-title">Tipos de Aluno e Seus Direitos e Obrigações</h3></div>
-    <div class="simples" aria-label="Explicação em linguagem simples">
+    <div class="simples">
       <div class="simples-head" aria-hidden="true">🗣️ Em linguagem simples</div>
-      <!-- CONTEÚDO SUBSTITUÍDO CONFORME SOLICITAÇÃO 03 -->
       <p><strong>Qual é o seu perfil de aluno?</strong></p>
-
-      <p><strong>Aluno Regular:</strong> Foi aprovado no processo seletivo e possui diploma em Direito (ou certificado de conclusão do curso). Cursa o mestrado completo e vincula-se a uma Linha de Pesquisa.</p>
-
-      <p><strong>Aluno Especial:</strong> Não cursa o mestrado completo, mas foi aceito pelo Colegiado para cursar até 3 disciplinas isoladas.<br>
-      💡 <strong>Atenção Graduandos:</strong> Se você está no último ano do curso de Direito, também pode participar de uma seleção para ser aluno especial!</p>
-
-      <p><strong>✅ Quais são os seus DIREITOS?</strong><br>
-      Como aluno regular, você tem direito a:</p>
-      <ul>
-        <li><strong>Orientação:</strong> Ter um professor credenciado para orientar suas atividades. (E você pode pedir a troca de orientador ao Colegiado, se tiver uma justificativa).</li>
-        <li><strong>Cancelamento de disciplina:</strong> Cancelar a matrícula em uma disciplina antes que 1/3 de suas aulas tenham ocorrido, desde que tenha a concordância do seu orientador ou do Coordenador.</li>
-        <li><strong>Trancamento de curso:</strong> Pausar o mestrado por até 6 meses (após concluir o 1º semestre), com a possibilidade de pedir mais uma prorrogação de até 6 meses, desde que justificado e aprovado pelo Colegiado.</li>
-      </ul>
-
-      <p><strong>⚠️ Quais são os seus DEVERES?</strong><br>
-      Como aluno regular, você se compromete a:</p>
-      <ul>
-        <li><strong>Cumprir os créditos de aulas:</strong> Cursar Metodologia + 2 disciplinas de formação geral logo no primeiro ano letivo. Você também precisará cursar ao menos 4 disciplinas de aprofundamento específico durante o programa.</li>
-        <li><strong>Controlar suas faltas:</strong> Manter uma frequência mínima de 75% em cada disciplina cursada.</li>
-        <li><strong>Fazer pesquisa na prática:</strong> Realizar atividades práticas como imersão prático-institucional, disseminação de conhecimento (como eventos e publicações) e escrita acadêmica.</li>
-        <li><strong>Foco total:</strong> É proibido matricular-se ou realizar outro curso de pós-graduação simultaneamente.</li>
-      </ul>
+      <p style="margin-top:.5rem;"><strong>Aluno Regular:</strong> Foi aprovado no processo seletivo e possui diploma em Direito (ou certificado de conclusão do curso). Cursa o mestrado completo e vincula-se a uma Linha de Pesquisa.</p>
+      <p style="margin-top:.5rem;"><strong>Aluno Especial:</strong> Não cursa o mestrado completo, mas foi aceito pelo Colegiado para cursar até 3 disciplinas isoladas.</p>
+      <p class="nota">💡 <strong>Atenção Graduandos:</strong> Se você está no último ano do curso de Direito, também pode participar de uma seleção para ser aluno especial!</p>
+      <p style="margin-top:.75rem;"><strong>✅ Quais são os seus DIREITOS?</strong></p>
+      <p>Como aluno regular, você tem direito a:</p>
+      <p><strong>Orientação:</strong> Ter um professor credenciado para orientar suas atividades. (E você pode pedir a troca de orientador ao Colegiado, se tiver uma justificativa).</p>
+      <p style="margin-top:.3rem;"><strong>Cancelamento de disciplina:</strong> Cancelar a matrícula em uma disciplina antes que 1/3 de suas aulas tenham ocorrido, desde que tenha a concordância do seu orientador ou do Coordenador.</p>
+      <p style="margin-top:.3rem;"><strong>Trancamento de curso:</strong> Pausar o mestrado por até 6 meses (após concluir o 1º semestre), com a possibilidade de pedir mais uma prorrogação de até 6 meses, desde que justificado e aprovado pelo Colegiado.</p>
+      <p style="margin-top:.75rem;"><strong>⚠️ Quais são os seus DEVERES?</strong></p>
+      <p>Como aluno regular, você se compromete a:</p>
+      <p><strong>Cumprir os créditos de aulas:</strong> Cursar Metodologia + 2 disciplinas de formação geral logo no primeiro ano letivo. Você também precisará cursar ao menos 4 disciplinas de aprofundamento específico durante o programa.</p>
+      <p style="margin-top:.3rem;"><strong>Controlar suas faltas:</strong> Manter uma frequência mínima de 75% em cada disciplina cursada.</p>
+      <p style="margin-top:.3rem;"><strong>Fazer pesquisa na prática:</strong> Realizar atividades práticas como imersão prático-institucional, disseminação de conhecimento (como eventos e publicações) e escrita acadêmica.</p>
+      <p style="margin-top:.3rem;"><strong>Foco total:</strong> É proibido matricular-se ou realizar outro curso de pós-graduação simultaneamente.</p>
     </div>
     <details class="detalhe" name="regulamento-details">
       <summary>📄 Ver texto original dos Arts. 16 e 17</summary>
@@ -1169,9 +1031,6 @@ kbd {
     </div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO V — DOCENTES
-       ===================================================== -->
   <h2 id="titulo5" class="titulo-titulo"><span>TÍTULO V</span> Corpo Docente</h2>
 
   <article class="card" id="art18-31" data-busca="docentes permanentes visitantes colaboradores orientador atribuições lattes credenciamento banca">
@@ -1195,9 +1054,6 @@ kbd {
     </div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO VI — ESTRUTURA ACADÊMICA
-       ===================================================== -->
   <h2 id="titulo6" class="titulo-titulo"><span>TÍTULO VI</span> Estrutura Acadêmica</h2>
 
   <article class="card" id="art33-34" data-busca="componentes curso créditos disciplinas imersão dissertação 33 créditos 24 meses grade curricular">
@@ -1273,28 +1129,23 @@ kbd {
 
   <article class="card" id="art41" data-busca="defesa banca membros externo prazo 30 dias dissertação arguição">
     <div class="card-head"><span class="art-badge">Art. 41</span><h3 class="card-title">Defesa da Dissertação / Trabalho Final</h3></div>
-    <div class="simples" aria-label="Explicação em linguagem simples">
+    <div class="simples">
       <div class="simples-head" aria-hidden="true">🗣️ Em linguagem simples</div>
-      <!-- CONTEÚDO SUBSTITUÍDO CONFORME SOLICITAÇÃO 04 -->
-      <p>A sua defesa ocorrerá em uma sessão pública, onde você apresentará seu trabalho para avaliação.</p>
-
-      <p><strong>👥 Como é formada a Banca Examinadora?</strong><br>
-      <strong>Composição:</strong> 3 membros titulares (com título mínimo de Mestre) aprovados pelo Colegiado.<br>
-      <strong>Presidente:</strong> Seu orientador é membro obrigatório e preside a banca.<br>
-      <strong>Membro Externo:</strong> Pelo menos 1 avaliador deve ser de fora do Programa e não ter vínculo com a UEPG.<br>
-      <strong>Suplente:</strong> A banca deve prever pelo menos 1 membro suplente (reserva).</p>
-
-      <p><strong>⏳ O que fazer ANTES da defesa (Prazo)</strong><br>
-      Você deve entregar na Secretaria Acadêmica 1 exemplar da sua Dissertação ou Trabalho Final para cada membro da banca.<br>
-      <strong>Prazo:</strong> Faça isso com, no mínimo, 30 dias de antecedência da data da defesa.</p>
-
-      <p><strong>🎓 O dia da Defesa e os Resultados</strong><br>
-      A banca atribuirá o conceito de "aprovado" ou "reprovado".<br>
-      💡 <strong>Dica:</strong> Trabalhos de excelência podem receber o conceito extra de "distinção e/ou louvor", dependendo do critério da banca!</p>
-
-      <p><strong>📝 O que fazer DEPOIS da defesa (Versão Definitiva)</strong><br>
-      Foi aprovado? Parabéns! Agora você tem um prazo máximo de 60 dias para realizar as modificações e correções sugeridas pela banca examinadora e entregar a sua versão definitiva.<br>
-      Após finalizar todas as etapas, seu diploma de Mestre será emitido pela Seção de Expedição de Diplomas da universidade.</p>
+      <p>A sua defesa ocorrerá em uma <strong>sessão pública</strong>, onde você apresentará seu trabalho para avaliação.</p>
+      <p style="margin-top:.75rem;">👥 <strong>Como é formada a Banca Examinadora?</strong></p>
+      <p><strong>Composição:</strong> 3 membros titulares (com título mínimo de Mestre) aprovados pelo Colegiado.</p>
+      <p><strong>Presidente:</strong> Seu orientador é membro obrigatório e preside a banca.</p>
+      <p><strong>Membro Externo:</strong> Pelo menos 1 avaliador deve ser de fora do Programa e não ter vínculo com a UEPG.</p>
+      <p><strong>Suplente:</strong> A banca deve prever pelo menos 1 membro suplente (reserva).</p>
+      <p style="margin-top:.75rem;">⏳ <strong>O que fazer ANTES da defesa (Prazo)</strong></p>
+      <p>Você deve entregar na Secretaria Acadêmica 1 exemplar da sua Dissertação ou Trabalho Final para cada membro da banca.</p>
+      <p><strong>Prazo:</strong> Faça isso com, no mínimo, <strong>30 dias de antecedência</strong> da data da defesa.</p>
+      <p style="margin-top:.75rem;">🎓 <strong>O dia da Defesa e os Resultados</strong></p>
+      <p>A banca atribuirá o conceito de <strong>"aprovado"</strong> ou <strong>"reprovado"</strong>.</p>
+      <p class="nota">💡 <strong>Dica:</strong> Trabalhos de excelência podem receber o conceito extra de <strong>"distinção e/ou louvor"</strong>, dependendo do critério da banca!</p>
+      <p style="margin-top:.75rem;">📝 <strong>O que fazer DEPOIS da defesa (Versão Definitiva)</strong></p>
+      <p>Foi aprovado? Parabéns! Agora você tem um prazo máximo de <strong>60 dias</strong> para realizar as modificações e correções sugeridas pela banca examinadora e entregar a sua versão definitiva.</p>
+      <p>Após finalizar todas as etapas, seu diploma de Mestre será emitido pela Seção de Expedição de Diplomas da universidade.</p>
     </div>
     <details class="detalhe" name="regulamento-details">
       <summary>📄 Ver texto original do Art. 41</summary>
@@ -1320,9 +1171,6 @@ kbd {
     </details>
   </article>
 
-  <!-- =====================================================
-       TÍTULO VII — REGIME DIDÁTICO
-       ===================================================== -->
   <h2 id="titulo7" class="titulo-titulo"><span>TÍTULO VII</span> Regime Didático</h2>
 
   <article class="card" id="art43-52" data-busca="ano letivo avaliação conceitos frequência desligamento prazo rendimento média">
@@ -1345,9 +1193,6 @@ kbd {
     </div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO VIII — OBTENÇÃO DO TÍTULO
-       ===================================================== -->
   <h2 id="titulo8" class="titulo-titulo"><span>TÍTULO VIII</span> Obtenção do Título de Mestre</h2>
 
   <article class="card" id="art53" data-busca="título mestre entrega versão final 60 dias termo publicação">
@@ -1368,9 +1213,6 @@ kbd {
     </div>
   </article>
 
-  <!-- =====================================================
-       TÍTULO IX — DISPOSIÇÕES GERAIS
-       ===================================================== -->
   <h2 id="titulo9" class="titulo-titulo"><span>TÍTULO IX</span> Disposições Gerais</h2>
 
   <article class="card" id="art54-56" data-busca="registro histórico recursos CEPE casos omissos CPG secretaria">
@@ -1379,4 +1221,256 @@ kbd {
       <div class="simples-head" aria-hidden="true">🗣️ Em linguagem simples</div>
       <p><strong>Registro do aluno (Art. 54):</strong> A Secretaria mantém um registro atualizado com resultados da seleção, aceite do orientador, créditos cursados e demais exigências.</p>
       <p><strong>Recursos (Art. 55):</strong> Das decisões do Colegiado, cabe recurso à CPG e, desta, ao CEPE.</p>
-      <p><strong>Casos não previstos (Art. 56):</strong> Serão resolvidos pelo CEPE, ouvido o Colegiado e
+      <p><strong>Casos não previstos (Art. 56):</strong> Serão resolvidos pelo CEPE, ouvido o Colegiado e a CPG.</p>
+      <p class="nota">💡 <strong>Dica:</strong> Mantenha cópias de todos os documentos entregues. Seu registro acadêmico é a prova de cumprimento das exigências.</p>
+    </div>
+    <details class="detalhe" name="regulamento-details">
+      <summary>📄 Ver texto original dos Arts. 54 a 56</summary>
+      <blockquote class="texto-orig">Art. 54 Cada discente terá registro organizado na Secretaria Acadêmica... Art. 55 Das decisões do Colegiado caberão recursos à CPG e destas ao CEPE. Art. 56 Os casos não previstos serão resolvidos pelo CEPE, ouvido o Colegiado e a CPG.</blockquote>
+    </details>
+  </article>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-inner">
+    <p><strong>UEPG LegalTechLab</strong> — Laboratório de Tecnologia e Inovação em Direito</p>
+    <p>Universidade Estadual de Ponta Grossa · Setor de Ciências Jurídicas</p>
+    <p style="margin-top:.75rem;">
+      <a href="https://www2.uepg.br/direito/wp-content/uploads/sites/76/2022/07/Regulamento-do-Programa-de-Mestrado-Profissional-em-Direito-incorpora-alteracoes-da-Resolucao-CEPE-n.-2022.13.pdf" target="_blank" rel="noopener">📄 Regulamento oficial (PDF)</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2025/lei/l15263.htm" target="_blank" rel="noopener">Lei nº 15.263/2025</a>
+    </p>
+    <p style="margin-top:.75rem;font-size:.78rem;opacity:.6;">Guia em linguagem simples conforme a Lei nº 15.263/2025 · Política Nacional de Linguagem Simples</p>
+  </div>
+</footer>
+
+<div id="rodape-acessibilidade" class="acessibilidade-info" tabindex="-1">
+  <div id="info-acessibilidade">
+    <strong>📌 Acessibilidade – Atalhos do teclado (eMAG):</strong><br>
+    • <kbd>Alt + 1</kbd> – Ir para o conteúdo principal<br>
+    • <kbd>Alt + 4</kbd> – Ir para este rodapé<br>
+    • <kbd>Alt + 0</kbd> – Ir para as informações de acessibilidade<br>
+    <br>
+    <strong>🔊 Ferramentas disponíveis nesta página:</strong><br>
+    ✓ <strong>VLibras</strong> – Tradutor para Língua Brasileira de Sinais (clique no ícone flutuante)<br>
+    ✓ <strong>UserWay</strong> – Painel de acessibilidade com ajustes de contraste, fonte, espaçamento, leitor de tela etc. (clique no ícone de pessoa com deficiência)<br>
+    <br>
+    <em>Este documento segue as diretrizes da Lei Brasileira de Inclusão (LBI) e do Modelo de Acessibilidade em Governo Eletrônico (eMAG).</em>
+  </div>
+</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  });
+</script>
+
+<script src="https://cdn.userway.org/widget.js" data-account="SEU_ID_AQUI"></script>
+
+<script>
+const srStyle=document.createElement('style');srStyle.textContent='.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}';document.head.appendChild(srStyle);
+
+(function(){
+  const btn=document.getElementById('btnTema');
+  const html=document.documentElement;
+  const saved=localStorage.getItem('ppgd-tema');
+  const sysDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDark=saved ? saved==='escuro' : sysDark;
+
+  function applyTheme(dark){
+    html.dataset.tema = dark ? 'escuro' : '';
+    btn.textContent = dark ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', dark ? 'Ativar modo claro' : 'Ativar modo escuro');
+  }
+
+  applyTheme(isDark);
+  btn.addEventListener('click', function(){
+    const currentDark = html.dataset.tema === 'escuro';
+    const newDark = !currentDark;
+    applyTheme(newDark);
+    localStorage.setItem('ppgd-tema', newDark ? 'escuro' : 'claro');
+  });
+})();
+
+(function(){
+  document.querySelectorAll('.gloss-btn').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      const open=btn.getAttribute('aria-expanded')==='true';
+      document.querySelectorAll('.gloss-btn[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+      btn.setAttribute('aria-expanded',open?'false':'true');
+    });
+    btn.addEventListener('keydown',function(e){
+      if(e.key==='Escape'){btn.setAttribute('aria-expanded','false');btn.focus();}
+    });
+  });
+  document.addEventListener('click',function(){
+    document.querySelectorAll('.gloss-btn[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+  });
+  window.addEventListener('scroll',function(){
+    document.querySelectorAll('.gloss-btn[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+  },{passive:true});
+})();
+
+(function(){
+  const input=document.getElementById('buscaInput');
+  const sem=document.getElementById('semResultado');
+  const artigos=document.querySelectorAll('article.card');
+  const titulos=document.querySelectorAll('.titulo-titulo');
+
+  function highlight(el,termo){
+    el.querySelectorAll('.simples, .card-head').forEach(function(node){
+      node.querySelectorAll('p,li,h3').forEach(function(t){
+        if(t.children.length===0&&termo){
+          const orig=t.dataset.orig||t.innerHTML;
+          t.dataset.orig=orig;
+          const re=new RegExp('('+termo.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+          t.innerHTML=orig.replace(re,'<mark style="background:rgba(201,161,53,.35);border-radius:2px;padding:0 2px;">$1</mark>');
+        } else if(t.dataset.orig&&!termo){
+          t.innerHTML=t.dataset.orig;
+          delete t.dataset.orig;
+        }
+      });
+    });
+  }
+
+  input.addEventListener('input',function(){
+    const termo=this.value.toLowerCase().trim();
+    let vis=0;
+    artigos.forEach(function(art){
+      const txt=(art.textContent+' '+(art.dataset.busca||'')).toLowerCase();
+      const show=!termo||txt.includes(termo);
+      art.style.display=show?'':'none';
+      if(show){vis++;if(termo)highlight(art,termo);else highlight(art,'');}
+    });
+    titulos.forEach(function(t){
+      let s=t.nextElementSibling,tem=false;
+      while(s&&!s.classList.contains('titulo-titulo')){
+        if(s.classList.contains('card')&&s.style.display!=='none'){tem=true;break;}
+        s=s.nextElementSibling;
+      }
+      t.style.display=(termo===''||tem)?'':'none';
+    });
+    sem.style.display=(termo&&vis===0)?'block':'none';
+  });
+})();
+
+(function(){
+  const cbs=document.querySelectorAll('#checkLista input[type="checkbox"]');
+  const fill=document.getElementById('progressFill');
+  const bar=document.getElementById('progressBar');
+  const txt=document.getElementById('checkTexto');
+  const pct=document.getElementById('checkPct');
+  const KEY='ppgd-checklist-v2';
+
+  function atualizar(){
+    const n=Array.from(cbs).filter(c=>c.checked).length;
+    const p=Math.round(n/cbs.length*100);
+    fill.style.width=p+'%';
+    bar.setAttribute('aria-valuenow',p);
+    txt.textContent=n+' de '+cbs.length+' requisitos cumpridos';
+    pct.textContent=p+'%';
+  }
+  function salvar(){
+    const s={};cbs.forEach(c=>{s[c.id]=c.checked;});
+    localStorage.setItem(KEY,JSON.stringify(s));
+  }
+  try{
+    const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+    cbs.forEach(c=>{if(s[c.id])c.checked=true;});
+  }catch(e){}
+  cbs.forEach(c=>{c.addEventListener('change',function(){salvar();atualizar();});});
+  atualizar();
+})();
+
+(function(){
+  const links=document.querySelectorAll('.nav-link');
+  const ids=['inicio','jornada','creditos-vis','checklist','titulo1','titulo2','titulo3','titulo4','titulo5','titulo6','titulo7','titulo8','titulo9'];
+  const alvo={};
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)alvo[id]=el;});
+
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        const id=e.target.id;
+        links.forEach(l=>{
+          l.classList.remove('ativo');
+          if(l.getAttribute('href')==='#'+id)l.classList.add('ativo');
+        });
+      }
+    });
+  },{rootMargin:'-50% 0px -45% 0px'});
+
+  Object.values(alvo).forEach(el=>obs.observe(el));
+
+  links.forEach(link=>{
+    link.addEventListener('click',function(e){
+      e.preventDefault();
+      const el=document.querySelector(this.getAttribute('href'));
+      if(el){el.scrollIntoView({behavior:'smooth'});el.focus({preventScroll:true});}
+    });
+  });
+})();
+
+(function(){
+  const dados=[
+    {label:'Formação geral',      cred:9,  cor:'#002855'},
+    {label:'Aprofundamento linha',cred:6,  cor:'#1a4a80'},
+    {label:'Aprofundamento livre',cred:6,  cor:'#2e6aad'},
+    {label:'Imersão prática',     cred:4,  cor:'#c9a135'},
+    {label:'Disseminação',        cred:4,  cor:'#e6c15a'},
+    {label:'Pesquisa e escrita',  cred:4,  cor:'#f0d88a'},
+  ];
+  const total=33;
+  const r=80,cx=100,cy=100,rIn=52;
+  let angulo=-Math.PI/2;
+  const svg=document.getElementById('donutSvg');
+  const leg=document.getElementById('creditosLegenda');
+
+  svg.innerHTML = '';
+
+  dados.forEach(function(d){
+    const frac=d.cred/total;
+    const ang=frac*2*Math.PI;
+    
+    const x1=cx+r*Math.cos(angulo);
+    const y1=cy+r*Math.sin(angulo);
+    const x2=cx+r*Math.cos(angulo+ang);
+    const y2=cy+r*Math.sin(angulo+ang);
+    const xi1=cx+rIn*Math.cos(angulo);
+    const yi1=cy+rIn*Math.sin(angulo);
+    const xi2=cx+rIn*Math.cos(angulo+ang);
+    const yi2=cy+rIn*Math.sin(angulo+ang);
+    
+    const large=ang>Math.PI?1:0;
+    
+    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',`M ${xi1} ${yi1} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} L ${xi2} ${yi2} A ${rIn} ${rIn} 0 ${large} 0 ${xi1} ${yi1} Z`);
+    path.setAttribute('fill',d.cor);
+    path.setAttribute('stroke','var(--fundo-card)');
+    path.setAttribute('stroke-width','2');
+    svg.appendChild(path);
+
+    angulo+=ang;
+  });
+
+  if(leg.children.length === 0) {
+    dados.forEach(function(d){
+      const li=document.createElement('div');
+      li.className='leg-item';
+      li.innerHTML='<div class="leg-cor" style="background:'+d.cor+'"></div><div class="leg-texto"><span class="leg-cred">'+d.cred+' cr.</span> <span class="leg-desc">'+d.label+'</span></div>';
+      leg.appendChild(li);
+    });
+  }
+})();
+</script>
+</body>
+</html>
