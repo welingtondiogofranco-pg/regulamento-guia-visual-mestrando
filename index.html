@@ -896,6 +896,9 @@ kbd {
   <!-- =====================================================
        VISUAL 2 — GRÁFICO DE CRÉDITOS
        ===================================================== -->
+  <!-- =====================================================
+       VISUAL 2 — GRÁFICO DE CRÉDITOS
+       ===================================================== -->
   <section id="creditos-vis" class="secao-visual" aria-labelledby="cred-titulo">
     <h2 id="cred-titulo">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
@@ -904,13 +907,28 @@ kbd {
     <p style="font-size:.9rem;color:var(--texto-suave);margin-bottom:1.5rem;">1 crédito = 15 horas. Prazo máximo de integralização: 24 meses + 6 meses excepcionais.</p>
     <div class="creditos-layout">
       <div class="donut-wrap" role="img" aria-label="Gráfico de rosca com a composição dos 33 créditos do mestrado">
-        <svg id="donutSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+        <svg id="donutSvg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Gráfico pré-renderizado -->
+          <path d="M 100 20 L 100 20 A 80 80 0 0 1 173.92 68.48 L 152 68.48 A 52 52 0 0 0 100 72 Z" fill="#002855" stroke="var(--fundo-card)" stroke-width="2"/>
+          <path d="M 173.92 68.48 L 173.92 68.48 A 80 80 0 0 1 180 100 L 152 100 A 52 52 0 0 0 152 68.48 Z" fill="#1a4a80" stroke="var(--fundo-card)" stroke-width="2"/>
+          <path d="M 180 100 L 180 100 A 80 80 0 0 1 173.92 131.52 L 152 131.52 A 52 52 0 0 0 152 100 Z" fill="#2e6aad" stroke="var(--fundo-card)" stroke-width="2"/>
+          <path d="M 173.92 131.52 L 173.92 131.52 A 80 80 0 0 1 148.48 164.24 L 131.52 148.48 A 52 52 0 0 0 152 131.52 Z" fill="#c9a135" stroke="var(--fundo-card)" stroke-width="2"/>
+          <path d="M 148.48 164.24 L 148.48 164.24 A 80 80 0 0 1 100 180 L 100 152 A 52 52 0 0 0 131.52 148.48 Z" fill="#e6c15a" stroke="var(--fundo-card)" stroke-width="2"/>
+          <path d="M 100 180 L 100 180 A 80 80 0 0 1 20 100 L 48 100 A 52 52 0 0 0 100 152 Z" fill="#f0d88a" stroke="var(--fundo-card)" stroke-width="2"/>
+        </svg>
         <div class="donut-centro">
           <div class="donut-num">33</div>
           <div class="donut-label">créditos</div>
         </div>
       </div>
-      <div class="creditos-legenda" id="creditosLegenda"></div>
+      <div class="creditos-legenda" id="creditosLegenda">
+        <div class="leg-item"><div class="leg-cor" style="background:#002855"></div><div class="leg-texto"><span class="leg-cred">9 cr.</span> <span class="leg-desc">Formação geral</span></div></div>
+        <div class="leg-item"><div class="leg-cor" style="background:#1a4a80"></div><div class="leg-texto"><span class="leg-cred">6 cr.</span> <span class="leg-desc">Aprofundamento linha</span></div></div>
+        <div class="leg-item"><div class="leg-cor" style="background:#2e6aad"></div><div class="leg-texto"><span class="leg-cred">6 cr.</span> <span class="leg-desc">Aprofundamento livre</span></div></div>
+        <div class="leg-item"><div class="leg-cor" style="background:#c9a135"></div><div class="leg-texto"><span class="leg-cred">4 cr.</span> <span class="leg-desc">Imersão prática</span></div></div>
+        <div class="leg-item"><div class="leg-cor" style="background:#e6c15a"></div><div class="leg-texto"><span class="leg-cred">4 cr.</span> <span class="leg-desc">Disseminação</span></div></div>
+        <div class="leg-item"><div class="leg-cor" style="background:#f0d88a"></div><div class="leg-texto"><span class="leg-cred">4 cr.</span> <span class="leg-desc">Pesquisa e escrita</span></div></div>
+      </div>
     </div>
   </section>
 
