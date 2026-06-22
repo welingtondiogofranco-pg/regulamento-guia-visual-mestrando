@@ -136,6 +136,55 @@ kbd {
   font-family: monospace;
 }
 
+/* =====================================================
+   ✅ BOTÃO DE LEITURA DE TELA - NOVO
+   ===================================================== */
+.btn-leitura {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--azul);
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  font-family: var(--ff-corpo);
+}
+.btn-leitura:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+  background: var(--azul-meio);
+}
+.btn-leitura.lendo {
+  background: #c0392b;
+  animation: pulse-leitura 1.5s infinite;
+}
+@keyframes pulse-leitura {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(192, 57, 43, 0.7); }
+  50% { box-shadow: 0 0 0 12px rgba(192, 57, 43, 0); }
+}
+.btn-leitura .icone { font-size: 18px; }
+[data-tema="escuro"] .btn-leitura {
+  background: var(--azul-meio);
+  color: #002855;
+}
+[data-tema="escuro"] .btn-leitura:hover {
+  background: var(--azul);
+}
+[data-tema="escuro"] .btn-leitura.lendo {
+  background: #e74c3c;
+  color: #fff;
+}
+
 .header {
   background: linear-gradient(135deg, #002855 0%, #1a3a6a 100%);
   color: #fff;
@@ -342,6 +391,12 @@ kbd {
   .header-guide-title { font-size: 1.1rem; }
   .header-guide-subtitle { font-size: 0.8rem; }
   .header-link { font-size: 0.75rem; padding: 0.25rem 0.7rem; }
+  .btn-leitura {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
 }
 
 [data-tema="escuro"] .header {
@@ -643,7 +698,7 @@ kbd {
   .card{padding:1.25rem;}
 }
 @media print{
-  .btn-tema,.nav,.busca-wrap,.footer,.gloss-btn,.accessibility-shortcuts,.acessibilidade-info,[vw],.vw,.enabled,.uwy,.userway-accessibility-widget{
+  .btn-tema,.btn-leitura,.nav,.busca-wrap,.footer,.gloss-btn,.accessibility-shortcuts,.acessibilidade-info,[vw],.vw,.enabled,.uwy,.userway-accessibility-widget{
     display:none!important;
   }
   body{color:#000;background:#fff;}
@@ -657,6 +712,7 @@ kbd {
 <div class="accessibility-shortcuts" aria-label="Atalhos de acessibilidade do teclado">
   <span>🔑 Atalhos (eMAG):</span>
   <a href="#conteudo" accesskey="1">Alt + 1</a> = Conteúdo |
+  <a href="#" onclick="alternarLeitura(); return false;" accesskey="2">Alt + 2</a> = Ouvir conteúdo |
   <a href="#rodape-acessibilidade" accesskey="4">Alt + 4</a> = Rodapé |
   <a href="#info-acessibilidade" accesskey="0">Alt + 0</a> = Acessibilidade
 </div>
@@ -1245,16 +1301,24 @@ kbd {
   </div>
 </footer>
 
+<!-- ✅ BOTÃO DE LEITURA DE TELA - NOVO -->
+<button class="btn-leitura" id="btnLeitura" aria-label="Ouvir conteúdo da página (Alt + 2)" title="Clique para ouvir o conteúdo em voz alta">
+  <span class="icone">🔊</span>
+  <span class="texto">Ouvir</span>
+</button>
+
 <div id="rodape-acessibilidade" class="acessibilidade-info" tabindex="-1">
   <div id="info-acessibilidade">
     <strong>📌 Acessibilidade – Atalhos do teclado (eMAG):</strong><br>
     • <kbd>Alt + 1</kbd> – Ir para o conteúdo principal<br>
+    • <kbd>Alt + 2</kbd> – Ouvir conteúdo em voz alta (Leitura de Tela)<br>
     • <kbd>Alt + 4</kbd> – Ir para este rodapé<br>
     • <kbd>Alt + 0</kbd> – Ir para as informações de acessibilidade<br>
     <br>
     <strong>🔊 Ferramentas disponíveis nesta página:</strong><br>
     ✓ <strong>VLibras</strong> – Tradutor para Língua Brasileira de Sinais (clique no ícone flutuante)<br>
     ✓ <strong>UserWay</strong> – Painel de acessibilidade com ajustes de contraste, fonte, espaçamento, leitor de tela etc. (clique no ícone de pessoa com deficiência)<br>
+    ✓ <strong>Leitura de Tela</strong> – Botão "🔊 Ouvir" no canto inferior direito (atalho: Alt + 2) para ouvir o conteúdo em voz alta via Web Speech API<br>
     <br>
     <em>Este documento segue as diretrizes da Lei Brasileira de Inclusão (LBI) e do Modelo de Acessibilidade em Governo Eletrônico (eMAG).</em>
   </div>
@@ -1274,6 +1338,174 @@ kbd {
 </script>
 
 <script src="https://cdn.userway.org/widget.js" data-account="SEU_ID_AQUI"></script>
+
+<!-- ✅ LEITURA DE TELA - WEB SPEECH API -->
+<script>
+(function() {
+    const btnLeitura = document.getElementById('btnLeitura');
+    const synth = window.speechSynthesis;
+    let utterance = null;
+    let estaLendo = false;
+
+    // Verificar suporte do navegador
+    if (!('speechSynthesis' in window)) {
+        btnLeitura.style.display = 'none';
+        console.warn('Web Speech API não suportada neste navegador.');
+        return;
+    }
+
+    // Configurar voz em português brasileiro
+    function obterVozPtBr() {
+        const vozes = synth.getVoices();
+        const vozPtBr = vozes.find(v => v.lang === 'pt-BR') || 
+                       vozes.find(v => v.lang.startsWith('pt')) ||
+                       vozes[0];
+        return vozPtBr;
+    }
+
+    // Carregar vozes
+    if (synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = () => {};
+    }
+
+    // Obter texto principal da página (exclui menus, botões, rodapés)
+    function obterTextoPrincipal() {
+        const seletor = document.querySelector('#conteudo') || document.body;
+        const clone = seletor.cloneNode(true);
+        
+        // Remove elementos que não devem ser lidos
+        const elementosParaRemover = clone.querySelectorAll(
+            '.btn-tema, .btn-leitura, .accessibility-shortcuts, ' +
+            '.acessibilidade-info, .skip-link, nav, footer, ' +
+            'button, script, style, .gloss-btn, .gloss-pop, ' +
+            '.busca-wrap, .nav, details summary'
+        );
+        elementosParaRemover.forEach(el => el.remove());
+        
+        // Remove conteúdo dos <details> que não estão abertos
+        clone.querySelectorAll('details:not([open]) .texto-orig').forEach(el => {
+            el.remove();
+        });
+        
+        // Substitui placeholders vazios por "campo em branco"
+        clone.querySelectorAll('[data-placeholder]').forEach(campo => {
+            if (!campo.textContent.trim()) {
+                campo.textContent = '';
+            }
+        });
+        
+        // Remove tags semânticas do texto (para leitura mais limpa)
+        clone.querySelectorAll('.tag').forEach(tag => {
+            tag.remove();
+        });
+        
+        return clone.innerText || clone.textContent;
+    }
+
+    // Dividir texto em chunks respeitando pontuação
+    function dividirTexto(texto, maxLen) {
+        const chunks = [];
+        const sentencas = texto.match(/[^.!?]+[.!?]+/g) || [texto];
+        let chunkAtual = '';
+
+        sentencas.forEach(sentenca => {
+            if ((chunkAtual + sentenca).length > maxLen && chunkAtual) {
+                chunks.push(chunkAtual.trim());
+                chunkAtual = sentenca;
+            } else {
+                chunkAtual += sentenca;
+            }
+        });
+
+        if (chunkAtual.trim()) {
+            chunks.push(chunkAtual.trim());
+        }
+
+        return chunks;
+    }
+
+    function finalizarLeitura() {
+        estaLendo = false;
+        btnLeitura.classList.remove('lendo');
+        btnLeitura.querySelector('.icone').textContent = '🔊';
+        btnLeitura.querySelector('.texto').textContent = 'Ouvir';
+        btnLeitura.setAttribute('aria-label', 'Ouvir conteúdo da página (Alt + 2)');
+    }
+
+    // Função principal de leitura
+    function alternarLeitura() {
+        if (estaLendo) {
+            // Parar leitura
+            synth.cancel();
+            finalizarLeitura();
+        } else {
+            // Iniciar leitura
+            const texto = obterTextoPrincipal();
+            if (!texto.trim()) {
+                alert('Não há conteúdo para ler.');
+                return;
+            }
+
+            const chunks = dividirTexto(texto, 200);
+            let indiceAtual = 0;
+
+            function lerProximoChunk() {
+                if (indiceAtual >= chunks.length || !estaLendo) {
+                    finalizarLeitura();
+                    return;
+                }
+
+                utterance = new SpeechSynthesisUtterance(chunks[indiceAtual]);
+                const voz = obterVozPtBr();
+                if (voz) utterance.voice = voz;
+                utterance.lang = 'pt-BR';
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+
+                utterance.onend = () => {
+                    indiceAtual++;
+                    lerProximoChunk();
+                };
+
+                utterance.onerror = (event) => {
+                    console.error('Erro na síntese de voz:', event);
+                    finalizarLeitura();
+                };
+
+                synth.speak(utterance);
+            }
+
+            estaLendo = true;
+            btnLeitura.classList.add('lendo');
+            btnLeitura.querySelector('.icone').textContent = '⏹️';
+            btnLeitura.querySelector('.texto').textContent = 'Parar';
+            btnLeitura.setAttribute('aria-label', 'Parar leitura em voz alta');
+            
+            lerProximoChunk();
+        }
+    }
+
+    // Tornar função global para o atalho Alt+2
+    window.alternarLeitura = alternarLeitura;
+
+    // Evento de clique
+    btnLeitura.addEventListener('click', alternarLeitura);
+
+    // Parar leitura ao mudar de página
+    window.addEventListener('beforeunload', () => {
+        if (estaLendo) synth.cancel();
+    });
+
+    // Atalho de teclado: Alt + 2
+    document.addEventListener('keydown', (e) => {
+        if (e.altKey && e.key === '2') {
+            e.preventDefault();
+            alternarLeitura();
+        }
+    });
+})();
+</script>
 
 <script>
 const srStyle=document.createElement('style');srStyle.textContent='.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}';document.head.appendChild(srStyle);
